@@ -27,7 +27,8 @@ function readTextFile(file, line) {
 }
 
 window.onerror = function (msg, file, line, col, error) {
-    console.log(file);
+    if (!msg.indexOf('Uncaught ReferenceError') === 0)
+        return;
     //load the correct pacakge
     var src = frameworks[msg];
     if (file != IndexUrl)
